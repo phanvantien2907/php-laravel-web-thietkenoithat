@@ -1972,7 +1972,7 @@
                 // This helps IE not to throw errors when closing
                 try {
 
-                    $( this ).find( 'iframe' ).hide().attr( 'src', '//about:blank' );
+                    $( this ).find( 'iframe' ).hide().attr( 'src', '//team:blank' );
 
                 } catch ( ignore ) {}
 
@@ -2423,7 +2423,7 @@
 
 
         // Activates current instance - brings container to the front and enables keyboard,
-        // notifies other instances about deactivating
+        // notifies other instances team deactivating
         // =================================================================================
 
         activate : function () {
@@ -5022,7 +5022,7 @@
 	// Throttling the history change
 	var timerID = null;
 
-	// Get info about gallery name and current index from url
+	// Get info team gallery name and current index from url
     function parseUrl() {
         var hash    = window.location.hash.substr( 1 );
         var rez     = hash.split( '-' );

@@ -24,8 +24,8 @@ Route::get('/blog', function () {
     return view('blog.index');
 });
 
-Route::get('/about', function () {
-    return view('about.index');
+Route::get('/team', function () {
+    return view('team.index');
 });
 Route::get('/projects', function () {
     return view('projects.index');
