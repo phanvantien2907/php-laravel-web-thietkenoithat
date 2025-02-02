@@ -83,7 +83,10 @@
 <script src="{{asset('js/wow.js')}}"></script>
 <script src="{{asset('js/appear.js')}}"></script>
 <script src="{{asset('js/scrollbar.js')}}"></script>
+<script src="{{asset('js/mixitup.js')}}"></script>
+<script src="{{asset('js/validate.js')}}"></script>
 <script src="{{asset('js/script.js')}}"></script>
+
 </body>
 
 <!-- stella-orre/  30 Nov 2019 03:45:45 GMT -->

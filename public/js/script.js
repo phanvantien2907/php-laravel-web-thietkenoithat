@@ -1,16 +1,16 @@
 (function($) {
-	
+
 	"use strict";
-	
-	
+
+
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
 		if($('.preloader').length){
 			$('.preloader').delay(200).fadeOut(500);
 		}
 	}
-	
-	
+
+
 	//Update Header Style and Scroll to Top
 	function headerStyle() {
 		if($('.main-header').length){
@@ -27,29 +27,29 @@
 			}
 		}
 	}
-	
+
 	headerStyle();
-	
+
 
 	//Submenu Dropdown Toggle
 	if($('.main-header li.dropdown ul').length){
 		$('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-right"></span></div>');
-		
+
 		//Dropdown Button
 		$('.main-header .navigation li.dropdown .dropdown-btn').on('click', function() {
 			$(this).prev('ul').slideToggle(500);
 		});
-		
+
 		//Disable dropdown parent link
 		//$('.main-header .navigation li.dropdown > a').on('click', function(e) {
 			//e.preventDefault();
 		//});
 	}
-	
-	
+
+
 	//Search Popup
 	if($('#search-popup').length){
-		
+
 		//Show Popup
 		$('.search-box-btn').on('click', function() {
 			$('#search-popup').addClass('popup-visible');
@@ -64,13 +64,13 @@
 			$('#search-popup').removeClass('popup-visible');
 		});
 	}
-	
-	
+
+
 	//Mobile Nav Hide Show
 	if($('.mobile-menu').length){
-		
+
 		$('.mobile-menu .menu-box').mCustomScrollbar();
-		
+
 		var mobileMenuContent = $('.main-header .nav-outer .main-menu .navigation').html();
 		$('.mobile-menu .navigation').append(mobileMenuContent);
 		$('.sticky-header .navigation').append(mobileMenuContent);
@@ -97,7 +97,7 @@
 		});
 
 	}
-	
+
 	// Main Slider Carousel
 	if ($('.banner-carousel').length) {
 		$('.banner-carousel').owlCarousel({
@@ -122,7 +122,7 @@
 					items:1
 				}
 			}
-		});    		
+		});
 	}
 
 
@@ -156,16 +156,16 @@
 					items:2
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//Product Tabs
 	if($('.project-tab').length){
 		$('.project-tab .project-tab-btns .p-tab-btn').on('click', function(e) {
 			e.preventDefault();
 			var target = $($(this).attr('data-tab'));
-			
+
 			if ($(target).hasClass('actve-tab')){
 				return false;
 			}else{
@@ -176,8 +176,8 @@
 			}
 		});
 	}
-	
-	
+
+
 	//Product Carousel
 	if ($('.project-carousel').length) {
 		$('.project-carousel').owlCarousel({
@@ -207,10 +207,10 @@
 					items:4
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//
 	//====================================================================//
 	// Sortable Masonary with Filters
@@ -218,12 +218,12 @@
 	//
 	function sortableMasonry() {
 		if($('.sortable-masonry').length){
-	
+
 			var winDow = $(window);
 			// Needed variables
 			var $container=$('.sortable-masonry .items-container');
 			var $filter=$('.filter-btns');
-	
+
 			$container.isotope({
 				filter:'*',
 				 masonry: {
@@ -234,12 +234,12 @@
 					easing:'linear'
 				}
 			});
-			// Isotope Filter 
+			// Isotope Filter
 			$filter.find('li').on('click', function(){
 				var selector = $(this).attr('data-filter');
-	
+
 				try {
-					$container.isotope({ 
+					$container.isotope({
 						filter	: selector,
 						animationOptions: {
 							duration: 500,
@@ -248,16 +248,16 @@
 						}
 					});
 				} catch(err) {
-	
+
 				}
 				return false;
 			});
-	
-	
+
+
 			winDow.on('resize', function(){
 				var selector = $filter.find('li.active').attr('data-filter');
 
-				$container.isotope({ 
+				$container.isotope({
 					filter	: selector,
 					animationOptions: {
 						duration: 500,
@@ -266,10 +266,10 @@
 					}
 				});
 			});
-	
-	
+
+
 			var filterItemA	= $('.filter-btns li');
-	
+
 			filterItemA.on('click', function(){
 				var $this = $(this);
 				if ( !$this.hasClass('active')) {
@@ -279,18 +279,18 @@
 			});
 		}
 	}
-	
+
 	sortableMasonry();
-	
-	
+
+
 	//Masonary
 	function enableMasonry() {
 		if($('.masonry-items-container').length){
-	
+
 			var winDow = $(window);
 			// Needed variables
 			var $container=$('.masonry-items-container');
-	
+
 			$container.isotope({
 				itemSelector: '.masonry-item',
 				 masonry: {
@@ -301,10 +301,10 @@
 					easing:'linear'
 				}
 			});
-	
+
 			winDow.on('resize', function(){
 
-				$container.isotope({ 
+				$container.isotope({
 					itemSelector: '.masonry-item',
 					animationOptions: {
 						duration: 500,
@@ -315,19 +315,19 @@
 			});
 		}
 	}
-	
+
 	enableMasonry();
-	
-	
-	
+
+
+
 	//Fact Counter + Text Count
 	if($('.count-box').length){
 		$('.count-box').appear(function(){
-	
+
 			var $t = $(this),
 				n = $t.find(".count-text").attr("data-stop"),
 				r = parseInt($t.find(".count-text").attr("data-speed"), 10);
-				
+
 			if (!$t.hasClass("counted")) {
 				$t.addClass("counted");
 				$({
@@ -345,17 +345,17 @@
 					}
 				});
 			}
-			
+
 		},{accY: 0});
 	}
-	
-	
+
+
 	//Tabs Box
 	if($('.tabs-box').length){
 		$('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
 			e.preventDefault();
 			var target = $($(this).attr('data-tab'));
-			
+
 			if ($(target).is(':visible')){
 				return false;
 			}else{
@@ -368,28 +368,28 @@
 			}
 		});
 	}
-	
-	
+
+
 	//Gallery Filters
 	if($('.filter-list').length){
 		$('.filter-list').mixItUp({});
 	}
-	 
-	
+
+
 	//Custom Seclect Box
 	if($('.custom-select-box').length){
 		$('.custom-select-box').selectmenu().selectmenu('menuWidget').addClass('overflow');
 	}
-	 
-	
+
+
 	//Jquery Spinner / Quantity Spinner
 	if($('.quantity-spinner').length){
 		$("input.quantity-spinner").TouchSpin({
 		  verticalbuttons: true
 		});
 	}
-	
-	 
+
+
 	//LightBox / Fancybox
 	if($('.lightbox-image').length) {
 		$('.lightbox-image').fancybox({
@@ -401,7 +401,7 @@
 		});
 	}
 
-	
+
 	//Contact Form Validation
 	if($('#contact-form').length){
 		$('#contact-form').validate({
@@ -422,8 +422,8 @@
 			}
 		});
 	}
-	
-	
+
+
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").on('click', function() {
@@ -432,11 +432,11 @@
 		   $('html, body').animate({
 			   scrollTop: $(target).offset().top
 			 }, 1500);
-	
+
 		});
 	}
-	
-	
+
+
 	// Elements Animation
 	if($('.wow').length){
 		var wow = new WOW(
@@ -455,19 +455,19 @@
 /* ==========================================================================
    When document is Scrollig, do
    ========================================================================== */
-	
+
 	$(window).on('scroll', function() {
 		headerStyle();
 	});
-	
+
 /* ==========================================================================
    When document is loading, do
    ========================================================================== */
-	
+
 	$(window).on('load', function() {
 		handlePreloader();
 		sortableMasonry();
 		enableMasonry();
-	});	
+	});
 
 })(window.jQuery);

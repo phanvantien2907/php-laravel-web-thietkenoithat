@@ -21,12 +21,20 @@ Route::get('/', function () {
     return view('home.index');
 });
 Route::get('/blog', function () {
-    return view('Blog.index');
+    return view('blog.index');
 });
 
 Route::get('/about', function () {
     return view('about.index');
 });
+Route::get('/projects', function () {
+    return view('projects.index');
+});
+
+Route::get('/contact', function () {
+    return view('contact.index');
+});
+
 
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {
