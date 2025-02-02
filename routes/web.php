@@ -24,6 +24,10 @@ Route::get('/Blog', function () {
     return view('Blog.index');
 });
 
+Route::get('/menu', function () {
+    return view('Menu.index');
+});
+
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('home'); // route mặc định khi vào /admin
