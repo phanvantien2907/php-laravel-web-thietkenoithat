@@ -20,12 +20,12 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('home.index');
 });
-Route::get('/Blog', function () {
+Route::get('/blog', function () {
     return view('Blog.index');
 });
 
-Route::get('/menu', function () {
-    return view('Menu.index');
+Route::get('/about', function () {
+    return view('about.index');
 });
 
 // admin route
