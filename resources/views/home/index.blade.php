@@ -146,15 +146,7 @@
 
                 <!--Filter-->
                 <div class="filters clearfix">
-
-                    <ul class="filter-tabs filter-btns text-center clearfix">
-                        <li class="active filter" data-role="button" data-filter=".all">All Projects</li>
-                        <li class="filter" data-role="button" data-filter=".residential">Residential</li>
-                        <li class="filter" data-role="button" data-filter=".commercial">Commercial</li>
-                        <li class="filter" data-role="button" data-filter=".hospital">Hospitality</li>
-                        <li class="filter" data-role="button" data-filter=".office">Office</li>
-                    </ul>
-
+               <x-category/>
                 </div>
 
                 <div class="items-container row clearfix">
@@ -322,7 +314,7 @@
                         <li>Chronic conditions, such as diabetes, COPD, or cancer</li>
                         <li>On Site Expertiset</li>
                     </ul>
-                    <div class="bold-text">Design your home, right here at Stella Orr'e <br> <a href="contact.html">Talk to a designer</a></div>
+                    <div class="bold-text">Design your home, right here at Stella Orr'e <br> <a href="/contact">Talk to a designer</a></div>
                 </div>
             </div>
 
@@ -578,7 +570,7 @@
         <div class="auto-container">
             <h2>Think Interior. Think Stella Orr'e</h2>
             <div class="text">Interiors for all styles and budgets, Choose from thousands of <br> designs. Heart your favorites to shortlist.</div>
-            <a href="contact.html" class="theme-btn btn-style-two"><span class="txt">contact us</span></a>
+            <a href="/contact" class="theme-btn btn-style-two"><span class="txt">contact us</span></a>
         </div>
     </section>
 
