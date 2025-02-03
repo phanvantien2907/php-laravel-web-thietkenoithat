@@ -36,6 +36,9 @@ Route::get('/contact', function () {
 });
 
 
+Route::get('/services/{slug}/{id}.html', [\App\Http\Controllers\Services::class, 'index'])->name('service.index');
+
+
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('home'); // route mặc định khi vào /admin

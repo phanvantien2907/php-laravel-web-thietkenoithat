@@ -8,7 +8,7 @@
                 </div>
                 <h3><a href="/{{$item->slug}}">{{$item->title}}</a></h3>
                 <div class="text">{{$item->description}}</div>
-                <a href="/{{$item->slug}}" class="read-more">Read More</a>
+                <a href="{{ route('service.index', ['slug' => $item->slug, 'id' => $item->servies_id ]  )}}" class="read-more">Read More</a>
             </div>
         </div>
     </div>
