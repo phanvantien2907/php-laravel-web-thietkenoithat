@@ -10,7 +10,6 @@ class Services extends Controller
     //
     public function index($slug, $id)
     {
-
         $services = Serv::where('slug', $slug)->where('servies_id', $id) ->firstOrFail();
         return view('services.index', compact('services'));
     }

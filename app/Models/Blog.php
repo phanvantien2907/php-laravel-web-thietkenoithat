@@ -36,7 +36,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Blog extends Model
 {
-	protected $table = 'Blog';
+	protected $table = 'blog';
 	protected $primaryKey = 'blog_id';
 	public $timestamps = false;
 
@@ -64,7 +64,7 @@ class Blog extends Model
 
 	public function user()
 	{
-		return $this->belongsTo(User::class);
+		return $this->belongsTo(User::class, 'user_id');
 	}
 
 	public function blog_comments()

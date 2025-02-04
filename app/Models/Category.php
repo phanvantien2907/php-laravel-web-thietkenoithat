@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $created_by
  * @property Carbon|null $modified_at
  * @property string|null $modified_by
+ * @property bool $is_active
  * 
  * @property Collection|Project[] $projects
  * @property Collection|Servy[] $servies
@@ -39,7 +40,8 @@ class Category extends Model
 
 	protected $casts = [
 		'position' => 'int',
-		'modified_at' => 'datetime'
+		'modified_at' => 'datetime',
+		'is_active' => 'bool'
 	];
 
 	protected $fillable = [
@@ -52,7 +54,8 @@ class Category extends Model
 		'seo_keywords',
 		'created_by',
 		'modified_at',
-		'modified_by'
+		'modified_by',
+		'is_active'
 	];
 
 	public function projects()

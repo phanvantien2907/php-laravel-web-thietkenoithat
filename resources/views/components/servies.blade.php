@@ -1,4 +1,3 @@
-
 @foreach($services as $item)
     <div class="service-block-two col-lg-4 col-md-6 col-sm-12">
         <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">

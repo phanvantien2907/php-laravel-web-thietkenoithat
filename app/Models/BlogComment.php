@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BlogComment
- *
+ * 
  * @property int $comment_id
  * @property Carbon|null $created_date
  * @property string|null $detail
@@ -20,8 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $phone
  * @property string|null $email
  * @property int $is_active
- *
- * @property Blog|null $Blog
+ * 
+ * @property Blog|null $blog
  *
  * @package App\Models
  */

@@ -8,11 +8,13 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 /**
  * Class User
- * 
+ *
  * @property int $user_id
  * @property string $name
  * @property string $email
@@ -22,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property bool $is_active
- * 
+ *
  * @property Collection|Blog[] $blogs
  *
  * @package App\Models
@@ -31,6 +33,7 @@ class User extends Model
 {
 	protected $table = 'users';
 	protected $primaryKey = 'user_id';
+    use HasFactory;
 
 	protected $casts = [
 		'email_verified_at' => 'datetime',
