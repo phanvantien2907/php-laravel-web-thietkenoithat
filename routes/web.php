@@ -35,9 +35,9 @@ Route::get('/contact', function () {
     return view('contact.index');
 });
 
-
 Route::get('/services/{slug}/{id}.html', [\App\Http\Controllers\Services::class, 'index'])->name('service.index');
 
+Route::get('/blog/{slug}/{id}.html', [\App\Http\Controllers\BlogController::class, 'detail'])->name('blog.detail');
 
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {

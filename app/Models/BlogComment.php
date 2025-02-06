@@ -7,20 +7,22 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BlogComment
- * 
+ *
  * @property int $comment_id
  * @property Carbon|null $created_date
  * @property string|null $detail
  * @property int|null $blog_id
  * @property string|null $name
  * @property string|null $phone
+ * @property string|null image
  * @property string|null $email
  * @property int $is_active
- * 
+ *
  * @property Blog|null $blog
  *
  * @package App\Models
@@ -30,6 +32,7 @@ class BlogComment extends Model
 	protected $table = 'blog_comment';
 	protected $primaryKey = 'comment_id';
 	public $timestamps = false;
+    use HasFactory;
 
 	protected $casts = [
 		'created_date' => 'datetime',
@@ -43,6 +46,7 @@ class BlogComment extends Model
 		'blog_id',
 		'name',
 		'phone',
+        'image',
 		'email',
 		'is_active'
 	];

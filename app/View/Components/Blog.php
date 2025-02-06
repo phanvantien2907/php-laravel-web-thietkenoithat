@@ -22,7 +22,7 @@ class Blog extends Component
      */
     public function render(): View|Closure|string
     {
-        $blog = BlogModel::with('user')->where('is_active', 1)->get();
+        $blog = BlogModel::with('user', 'blog_comments')->where('is_active', 1)->get();
         return view('components.blog', compact('blog'));
     }
 }
