@@ -55,80 +55,25 @@
 
                         <!--Comments Area-->
                         <div class="comments-area">
-                            <div class="group-title"><h2>Comments 4</h2></div>
+                            <div class="group-title"><h2>Comments {{$blog->blog_comments->count()}}</h2></div>
                             <div class="inner-box">
-                                <!--Comment Box-->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <div class="author-thumb"><img src="{{asset('images/resource/author-1.jpg')}}" alt=""></div>
-                                        <div class="comment-inner">
-                                            <div class="comment-info clearfix"><strong>Sarah john</strong></div>
-                                            <div class="text">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</div>
-                                            <ul class="post-info">
-                                                <li>08 Feb, 2019</li>
-                                                <li><a href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!--Comment Box-->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <div class="author-thumb"><img src="{{asset('images/resource/author-2.jpg')}}" alt=""></div>
-                                        <div class="comment-inner">
-                                            <div class="comment-info clearfix"><strong>Robert john</strong></div>
-                                            <div class="text">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</div>
-                                            <ul class="post-info">
-                                                <li>08 Feb, 2019</li>
-                                                <li><a href="#">Reply</a></li>
-                                            </ul>
+                                @foreach($blog->blog_comments as $item)
+                                    <div class="comment-box">
+                                        <div class="comment">
+                                            <div class="author-thumb"><img src="/{{$item->image}}" alt=""></div>
+                                            <div class="comment-inner">
+                                                <div class="comment-info clearfix"><strong>{{$item->name}}</strong></div>
+                                                <div class="text">{{$item->detail}}</div>
+                                                <ul class="post-info">
+                                                    <li>{{$item->created_date ? \Carbon\Carbon::parse($item->created_date)->format('d-m-Y') : 'unknown'}}</li>
+                                                    <li><a href="#">Reply</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!--Comment Box-->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <div class="author-thumb"><img src="{{asset('images/resource/author-1.jpg')}}" alt=""></div>
-                                        <div class="comment-inner">
-                                            <div class="comment-info clearfix"><strong>Sarah john</strong></div>
-                                            <div class="text">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</div>
-                                            <ul class="post-info">
-                                                <li>08 Feb, 2019</li>
-                                                <li><a href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="comment reply-comment">
-                                        <div class="author-thumb"><img src="{{asset('images/resource/author-2.jpg')}}" alt=""></div>
-                                        <div class="comment-inner">
-                                            <div class="comment-info clearfix"><strong>Robert john</strong></div>
-                                            <div class="text">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</div>
-                                            <ul class="post-info">
-                                                <li>08 Feb, 2019</li>
-                                                <li><a href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!--Comment Box-->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <div class="author-thumb"><img src="{{asset('images/resource/author-1.jpg')}}" alt=""></div>
-                                        <div class="comment-inner">
-                                            <div class="comment-info clearfix"><strong>Sarah john</strong></div>
-                                            <div class="text">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</div>
-                                            <ul class="post-info">
-                                                <li>08 Feb, 2019</li>
-                                                <li><a href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
                         </div>
