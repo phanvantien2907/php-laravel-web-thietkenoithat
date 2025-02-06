@@ -3,6 +3,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,8 @@ Route::get('/contact', function () {
 Route::get('/services/{slug}/{id}.html', [\App\Http\Controllers\Services::class, 'index'])->name('service.index');
 
 Route::get('/blog/{slug}/{id}.html', [\App\Http\Controllers\BlogController::class, 'detail'])->name('blog.detail');
+
+Route::post('/blog/add-comment', [\App\Http\Controllers\BlogController::class, 'addComment'])->name('blog.addComment');
 
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {

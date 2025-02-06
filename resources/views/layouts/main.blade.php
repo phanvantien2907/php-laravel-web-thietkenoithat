@@ -8,6 +8,7 @@
     <!-- Stylesheets -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('toastr/toastr.css')}}" rel="stylesheet">
     <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
 
     <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
@@ -74,6 +75,8 @@
 
 <!--Scroll to top-->
 <script src="{{asset('js/jquery.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/jquery-ui.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>

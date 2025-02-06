@@ -80,33 +80,74 @@
 
                         <!-- Comment Form -->
                         <div class="comment-form">
-
                             <div class="group-title"><h2>Leave a Comment</h2></div>
                             <div class="form-inner">
-                                <!--Comment Form-->
-                                <form method="post" action="http://t.commonsupport.com/stella-orre/blog.html">
+                                <form id="commentForm">
+                                    @csrf
                                     <div class="row clearfix">
                                         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                            <input type="text" name="username" placeholder="Your name" required>
+                                            <input type="text" id="name" name="name" placeholder="Your name" required>
                                         </div>
 
                                         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                            <input type="email" name="email" placeholder="Email address" required>
+                                            <input type="email" id="email" name="email" placeholder="Email address" required>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                            <textarea name="message" placeholder="Write message"></textarea>
+                                            <textarea name="detail" id="detail" placeholder="Write message"></textarea>
+                                            <input type="hidden" id="blog_id" name="blog_id" value="{{$blog->blog_id}}">
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                            <button class="theme-btn submit-btn" type="submit" name="submit-form">Post Comment</button>
+                                            <button class="theme-btn submit-btn" id="submitComment" type="submit" name="submit-form">Post Comment</button>
                                         </div>
 
                                     </div>
                                 </form>
+
+                                <div id="messageBox" style="display: none;"></div>
+
                             </div>
                         </div>
-                        <!--End Comment Form -->
+
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $("#submitComment").click(function (e) {
+                                    e.preventDefault();
+
+                                    var _blogid = $("#blog_id").val();
+                                    var _name = $("#name").val();
+                                    var _email = $("#email").val();
+                                    var _detail = $("#detail").val();
+
+                                    $.ajax({
+                                        url: "{{ route('blog.addComment') }}",
+                                        type: "POST",
+                                        data: {
+                                            _token: "{{ csrf_token() }}",
+                                            blog_id: _blogid,
+                                            name: _name,
+                                            email: _email,
+                                            detail: _detail
+                                        },
+                                        success: function (response) {
+                                            if (response.status) {
+                                                toastr.success("Bình luận thành công!");
+                                                $("#commentForm")[0].reset();
+                                            } else {
+                                                toastr.error("Bình luận không thành công.");
+                                            }
+                                        },
+                                        error: function () {
+                                            toastr.error("Lỗi! Vui lòng thử lại.");
+                                        }
+                                    });
+                                    return false;
+                                });
+                            });
+                        </script>
+
 
                     </div>
                 </div>
@@ -145,25 +186,25 @@
                             <div class="sidebar-title"><h2>Recent News</h2></div>
 
                             <article class="post">
-                                <figure class="post-thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a></figure>
+                                <figure class="post-thumb"><a href="blog-detail.html"><img src="/images/resource/post-thumb-1.jpg" alt=""></a></figure>
                                 <div class="text"><a href="blog-detail.html">Hanging fruit to identify a ballpark value added ...</a></div>
                                 <div class="post-info">12 April. 2019</div>
                             </article>
 
                             <article class="post">
-                                <figure class="post-thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a></figure>
+                                <figure class="post-thumb"><a href="blog-detail.html"><img src="/images/resource/post-thumb-2.jpg" alt=""></a></figure>
                                 <div class="text"><a href="blog-detail.html">Organically grow the holistic world view ...</a></div>
                                 <div class="post-info">12 April. 2019</div>
                             </article>
 
                             <article class="post">
-                                <figure class="post-thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a></figure>
+                                <figure class="post-thumb"><a href="blog-detail.html"><img src="/images/resource/post-thumb-3.jpg" alt=""></a></figure>
                                 <div class="text"><a href="blog-detail.html">Bring to the table in the win-win survival ...</a></div>
                                 <div class="post-info">12 April. 2019</div>
                             </article>
 
                             <article class="post">
-                                <figure class="post-thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a></figure>
+                                <figure class="post-thumb"><a href="blog-detail.html"><img src="/images/resource/post-thumb-4.jpg" alt=""></a></figure>
                                 <div class="text"><a href="blog-detail.html">Override the digital divide with additional ...</a></div>
                                 <div class="post-info">12 April. 2019</div>
                             </article>
@@ -187,4 +228,5 @@
             </div>
         </div>
     </div>
+
 @endsection
