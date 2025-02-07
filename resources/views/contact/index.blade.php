@@ -31,30 +31,69 @@
                         <div class="contact-form">
 
                             <!--Contact Form-->
-                            <form method="post" action="http://t.commonsupport.com/stella-orre/sendemail.php" id="contact-form">
+                            <form id="contactForm">
+                                @csrf
                                 <div class="row clearfix">
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <input type="text" name="username" placeholder="Your name" required>
+                                        <input type="text" id="name" name="username" placeholder="Your name" required>
                                     </div>
 
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <input type="text" name="email" placeholder="Email address" required>
+                                        <input type="text" id="email" name="email" placeholder="Email address" required>
                                     </div>
 
                                     <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                        <input type="text" name="subject" placeholder="Subject" required>
+                                        <input type="text" id="phone" name="phone" placeholder="Phone" required>
                                     </div>
 
                                     <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                        <textarea name="message" placeholder="Message"></textarea>
+                                        <textarea name="message" id="message" placeholder="Message"></textarea>
                                     </div>
 
                                     <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                        <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="txt">Submit now</span></button>
+                                        <button class="theme-btn btn-style-one" id="submitContact" type="submit" name="submit-form"><span class="txt">Submit now</span></button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $("#submitContact").click(function (e) {
+                                    e.preventDefault();
+
+                                    var _name = $("#name").val();
+                                    var _email = $("#email").val();
+                                    var _phone = $("#phone").val();
+                                    var _message = $("#message").val();
+
+                                    $.ajax({
+                                        url: "{{ route('contact.create') }}",
+                                        type: "POST",
+                                        data: {
+                                            _token: "{{ csrf_token() }}",
+                                            name: _name,
+                                            email: _email,
+                                            phone: _phone,
+                                            message: _message
+                                        },
+                                        success: function (response) {
+                                            if (response.status) {
+                                                toastr.success("Gửi liên hệ thành công!");
+                                                $("#contactForm")[0].reset();
+                                            } else {
+                                                toastr.error("Gửi liên hệ thất bại");
+                                            }
+                                        },
+                                        error: function () {
+                                            toastr.error("Lỗi khi gửi! Vui lòng thử lại.");
+                                        }
+                                    });
+                                    return false;
+                                });
+                            });
+                        </script>
 
                     </div>
                 </div>

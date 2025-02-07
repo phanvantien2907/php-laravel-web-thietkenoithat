@@ -42,6 +42,9 @@ Route::get('/blog/{slug}/{id}.html', [\App\Http\Controllers\BlogController::clas
 
 Route::post('/blog/add-comment', [\App\Http\Controllers\BlogController::class, 'addComment'])->name('blog.addComment');
 
+Route::post('/contact/send', [\App\Http\Controllers\ContactController::class, 'create'])->name('contact.create');
+
+
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('home'); // route mặc định khi vào /admin
