@@ -55,6 +55,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('blog', \App\Http\Controllers\Admin\BlogController::class);
     Route::resource('project', \App\Http\Controllers\Admin\ProjectController::class);
     Route::resource('menu', \App\Http\Controllers\Admin\MenuController::class);
+    Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 });
 
 
