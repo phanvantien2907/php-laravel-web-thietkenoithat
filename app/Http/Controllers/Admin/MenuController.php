@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class BlogController extends Controller
     public function index()
     {
         //
-        return view('admin.blog.index');
+        return view('admin.menu.index');
     }
 
     /**
@@ -22,6 +22,7 @@ class BlogController extends Controller
     public function create()
     {
         //
+        return view('admin.menu.create');
     }
 
     /**
@@ -38,6 +39,7 @@ class BlogController extends Controller
     public function show(string $id)
     {
         //
+        return view('admin.menu.show');
     }
 
     /**
@@ -46,6 +48,7 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         //
+        return view('admin.menu.edit');
     }
 
     /**
@@ -54,6 +57,7 @@ class BlogController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        return view('admin.menu.edit');
     }
 
     /**

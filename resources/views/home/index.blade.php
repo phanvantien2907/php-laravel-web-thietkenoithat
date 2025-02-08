@@ -130,7 +130,7 @@
     </section>
     <!-- End Services Section Two -->
 
-    <!-- Project Section -->
+    <!-- project Section -->
     <section class="project-section">
         <div class="auto-container">
             <!-- Title Box -->
@@ -290,12 +290,12 @@
 
             <!-- More Projects -->
             <div class="more-projects">
-                <a href="projects-classic.html" class="projects">View All Projects</a>
+                <a href="/projects" class="projects">View All Projects</a>
             </div>
 
         </div>
     </section>
-    <!-- End Project Section -->
+    <!-- End project Section -->
 
     <!-- Fluid Section One -->
     <section class="fluid-section-one">

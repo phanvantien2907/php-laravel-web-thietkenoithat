@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class BlogController extends Controller
     public function index()
     {
         //
-        return view('admin.blog.index');
+        return view('admin.login.index');
     }
 
     /**
@@ -22,6 +22,7 @@ class BlogController extends Controller
     public function create()
     {
         //
+        return view('admin.login.create');
     }
 
     /**
@@ -30,6 +31,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -38,6 +40,7 @@ class BlogController extends Controller
     public function show(string $id)
     {
         //
+        return view('admin.login.show');
     }
 
     /**
@@ -46,6 +49,7 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         //
+        return view('admin.login.edit');
     }
 
     /**
@@ -54,6 +58,7 @@ class BlogController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        return view('admin.login.edit');
     }
 
     /**

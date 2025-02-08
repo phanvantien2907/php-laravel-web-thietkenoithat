@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Blog
+ * Class blog
  *
  * @property int $blog_id
  * @property int $user_id

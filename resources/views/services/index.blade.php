@@ -80,7 +80,7 @@
                             </ul>
                         </div>
 
-                        <!-- Sidebar Widget / Contact Widget-->
+                        <!-- Sidebar Widget / contact Widget-->
                         <div class="sidebar-widget contact-widget">
                             <div class="widget-content" style="background-image: url({{asset('images/background/7.jpg')}});">
                                 <h3>Get Free Quote</h3>

@@ -1,19 +1,19 @@
 @extends('layouts.main')
 @section('content')
     <!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/5.jpg)">
+    <section class="page-title" style="background-image:url(/images/background/5.jpg)">
         <div class="auto-container">
             <h2>Contact Us</h2>
             <ul class="page-breadcrumb">
-                <li><a href="index-2.html">home</a></li>
+                <li><a href="/">home</a></li>
                 <li>Contact Us</li>
             </ul>
         </div>
     </section>
     <!--End Page Title-->
 
-    <!-- Contact Form Section -->
-    <section class="contact-form-section" style="background-image:url(images/background/contact.png)">
+    <!-- contact Form Section -->
+    <section class="contact-form-section" style="background-image:url(/images/background/contact.png)">
         <div class="auto-container">
             <!-- Sec Title -->
             <div class="sec-title">
@@ -27,10 +27,10 @@
                 <div class="form-column col-lg-7 col-md-12 col-sm-12">
                     <div class="inner-column">
 
-                        <!-- Contact Form -->
+                        <!-- contact Form -->
                         <div class="contact-form">
 
-                            <!--Contact Form-->
+                            <!--contact Form-->
                             <form id="contactForm">
                                 @csrf
                                 <div class="row clearfix">
@@ -102,16 +102,16 @@
                 <div class="info-column col-lg-5 col-md-12 col-sm-12">
                     <div class="inner-column">
 
-                        <!-- Contact Info List -->
+                        <!-- contact Info List -->
                         <ul class="contact-info-list">
                             <li><strong>Address :</strong><br>256, Stella Orr'e,, New York 24</li>
                         </ul>
-                        <!-- Contact Info List -->
+                        <!-- contact Info List -->
                         <ul class="contact-info-list">
                             <li><strong>Phone : </strong><a href="tel:1800-456-7890">1800 456 7890</a></li>
                             <li><strong>Email : </strong><a href="mailto:info@stellaorre.com">info@stellaorre.com</a></li>
                         </ul>
-                        <!-- Contact Info List -->
+                        <!-- contact Info List -->
                         <ul class="contact-info-list">
                             <li><strong>Opening Hours :</strong><br>8:00 AM – 10:00 PM <br> Monday – Sunday</li>
                         </ul>
@@ -123,7 +123,7 @@
 
         </div>
     </section>
-    <!-- End Contact Form Section -->
+    <!-- End contact Form Section -->
 
     <!-- Map Section -->
     <section class="map-section">
@@ -136,7 +136,7 @@
                      data-type="roadmap"
                      data-hue="#ffc400"
                      data-title="Melbourne Australia"
-                     data-icon-path="images/icons/map-marker.png"
+                     data-icon-path="/images/icons/map-marker.png"
                      data-content="(1800) 456 7890 <br> Mon-Sat: 7.00an - 9.00pm">
                 </div>
             </div>

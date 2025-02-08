@@ -47,10 +47,14 @@ Route::post('/contact/send', [\App\Http\Controllers\ContactController::class, 'c
 
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('home'); // route mặc định khi vào /admin
+    Route::get('/', [\App\Http\Controllers\Admin\LoginController::class, 'index'])->name('login'); // route mặc dinh khi vào admin
     Route::resource('contact', \App\Http\Controllers\Admin\ContactController::class);
+    Route::resource('login', \App\Http\Controllers\Admin\LoginController::class);
+    Route::resource('register', \App\Http\Controllers\Admin\RegisiterController::class);
+    Route::resource('home', \App\Http\Controllers\Admin\DashboardController::class);
     Route::resource('blog', \App\Http\Controllers\Admin\BlogController::class);
     Route::resource('project', \App\Http\Controllers\Admin\ProjectController::class);
+    Route::resource('menu', \App\Http\Controllers\Admin\MenuController::class);
 });
 
 

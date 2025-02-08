@@ -402,7 +402,7 @@
 	}
 
 
-	//Contact Form Validation
+	//contact Form Validation
 	if($('#contact-form').length){
 		$('#contact-form').validate({
 			rules: {

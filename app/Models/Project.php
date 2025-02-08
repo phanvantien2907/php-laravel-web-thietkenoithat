@@ -10,8 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Project
- * 
+ * Class project
+ *
  * @property int $project_id
  * @property int|null $category_id
  * @property string|null $title
@@ -19,13 +19,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $description
  * @property string|null $meta_title
  * @property string|null $meta_description
- * @property string|null $location
+ * @property string|null $image
  * @property int|null $square_footage
  * @property Carbon|null $completion_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property bool $is_active
- * 
+ *
  * @property Category|null $category
  *
  * @package App\Models
@@ -49,7 +49,7 @@ class Project extends Model
 		'description',
 		'meta_title',
 		'meta_description',
-		'location',
+		'image',
 		'square_footage',
 		'completion_at',
 		'is_active'

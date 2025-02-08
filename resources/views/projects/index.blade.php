@@ -1,12 +1,12 @@
 @extends('layouts.main')
 @section('content')
     <!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/5.jpg)">
+    <section class="page-title" style="background-image:url(/images/background/5.jpg)">
         <div class="auto-container">
-            <h2>Portfolio 1</h2>
+            <h2>Projects</h2>
             <ul class="page-breadcrumb">
                 <li><a href="/">home</a></li>
-                <li>Portfolio 1</li>
+                <li>Projects</li>
             </ul>
         </div>
     </section>

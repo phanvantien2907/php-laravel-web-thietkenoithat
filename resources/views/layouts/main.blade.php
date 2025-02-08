@@ -90,6 +90,9 @@
 <script src="{{asset('js/validate.js')}}"></script>
 <script src="{{asset('js/script.js')}}"></script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
+<script src="{{asset('js/map-script.js')}}"></script>
+
 </body>
 
 <!-- stella-orre/  30 Nov 2019 03:45:45 GMT -->

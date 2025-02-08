@@ -17,7 +17,7 @@
         <div class="auto-container">
             <div class="row clearfix">
 
-                <!--Content Side / Blog Classic -->
+                <!--Content Side / blog Classic -->
                 <div class="content-side col-xl-9 col-lg-8 col-md-12 col-sm-12">
                     <div class="blog-single padding-right">
                         <div class="inner-box">
@@ -166,7 +166,7 @@
                             </form>
                         </div>
 
-                        <!--Blog Category Widget-->
+                        <!--blog Category Widget-->
                         <div class="sidebar-widget sidebar-blog-category">
                             <div class="sidebar-title">
                                 <h2>Categories</h2>

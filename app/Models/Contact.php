@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
 /**
- * Class Contact
+ * Class contact
  *
  * @property int $contact_id
  * @property string|null $name
