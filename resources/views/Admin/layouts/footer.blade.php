@@ -1,3 +1,8 @@
-<div>
-    <!-- Let all your things have their places; let each part of your business have its time. - Benjamin Franklin -->
-</div>
+<footer class="main-footer">
+    <div class="footer-left">
+        Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Phan Văn Tiến</a>
+    </div>
+    <div class="footer-right">
+
+    </div>
+</footer>
