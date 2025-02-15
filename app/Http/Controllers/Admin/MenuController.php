@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -13,7 +14,8 @@ class MenuController extends Controller
     public function index()
     {
         //
-        return view('admin.menu.index');
+        $Menus = Menu::all();
+        return view('admin.menu.index', compact('Menus'));
     }
 
     /**
@@ -30,41 +32,48 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Menu::create($request->all());
+        session()->flash('success', 'Thêm menu thành công');
+        return redirect()->route('admin.menu.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
-        return view('admin.menu.show');
+        $menu = Menu::findOrFail($id);
+        return view('admin.menu.show', compact('menu'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
-        //
-        return view('admin.menu.edit');
+        $menu = Menu::findOrFail($id);
+        return view('admin.menu.edit', compact('menu'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-        return view('admin.menu.edit');
+        $menu = Menu::findOrFail($id);
+        $menu->update($request->all());
+        session()->flash('edit_success', 'Cập nhật menu thành công');
+        return redirect()->route('admin.menu.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $menu = Menu::findOrFail($id);
+        $menu->delete();
+        session()->flash('delete_success', 'Xóa menu thành công!');
+        return redirect()->route('admin.menu.index');
     }
 }

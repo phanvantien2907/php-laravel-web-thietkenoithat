@@ -8,6 +8,7 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{asset('area-admin/assets/modules/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 
     <!-- CSS Libraries -->
@@ -19,6 +20,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('area-admin/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('area-admin/assets/css/components.css')}}">
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -29,7 +31,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
     <!-- /END GA --></head>
-
 <body>
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
@@ -65,5 +66,8 @@
 <!-- Template JS File -->
 <script src="{{asset('area-admin/assets/js/scripts.js')}}"></script>
 <script src="{{asset('area-admin/assets/js/custom.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" ></script>
+
+
 </body>
 </html>

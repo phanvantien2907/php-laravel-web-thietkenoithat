@@ -7,11 +7,12 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Menu
- * 
+ *
  * @property int $menu_id
  * @property string|null $title
  * @property string|null $slug
@@ -28,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Menu extends Model
 {
+    use HasFactory;
 	protected $table = 'menu';
 	protected $primaryKey = 'menu_id';
 	public $timestamps = false;
