@@ -8,11 +8,12 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Category
- * 
+ *
  * @property int $category_id
  * @property string|null $title
  * @property string|null $slug
@@ -26,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $modified_at
  * @property string|null $modified_by
  * @property bool $is_active
- * 
+ *
  * @property Collection|Project[] $projects
  * @property Collection|Servy[] $servies
  *
@@ -34,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Category extends Model
 {
+    use HasFactory;
 	protected $table = 'category';
 	protected $primaryKey = 'category_id';
 	public $timestamps = false;

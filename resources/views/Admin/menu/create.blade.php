@@ -51,8 +51,6 @@
                                         <a href="/admin/menu" class="btn btn-secondary rounded-pill btn-lg mx-3">Cancel</a>
                                     </div>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>
@@ -60,12 +58,5 @@
             </div>
         </section>
     </div>
-
-    <script>
-        @if(session('success'))
-        toastr.success("{{ session('success') }}");
-        @endif
-    </script>
-
 
 @endsection

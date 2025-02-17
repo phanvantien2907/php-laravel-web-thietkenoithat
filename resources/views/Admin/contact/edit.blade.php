@@ -33,8 +33,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Levels</label>
-                                        <input type="text" name="message" class="form-control" value="{{$contact->message}}" readonly>
+                                        <label>Message</label>
+                                        <textarea name="message" class="form-control" rows="5" readonly>{!! $contact->message !!}</textarea>
                                     </div>
 
                                     <div class="form-group">

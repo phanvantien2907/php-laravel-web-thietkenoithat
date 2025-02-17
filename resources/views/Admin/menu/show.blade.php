@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Thêm mới menu')
+@section('title', 'Chi tiết menu')
 @section('content')
     <div class="main-content">
         <section class="section">
