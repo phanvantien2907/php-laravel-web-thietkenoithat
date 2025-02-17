@@ -57,6 +57,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('menu', \App\Http\Controllers\Admin\MenuController::class);
     Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('team', \App\Http\Controllers\Admin\TeamController::class);
+    Route::get('file-manager', [\Barryvdh\Elfinder\ElfinderController::class, 'showIndex'])->name('file-manager');
 });
 
 

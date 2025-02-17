@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('area-admin/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('area-admin/assets/css/components.css')}}">
 
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -45,7 +46,11 @@
 </div>
 
 <!-- General JS Scripts -->
+
+
 <script src="{{asset('area-admin/assets/modules/jquery.min.js')}}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="{{asset('area-admin/assets/modules/popper.js')}}"></script>
 <script src="{{asset('area-admin/assets/modules/tooltip.js')}}"></script>
 <script src="{{asset('area-admin/assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -66,7 +71,8 @@
 <!-- Template JS File -->
 <script src="{{asset('area-admin/assets/js/scripts.js')}}"></script>
 <script src="{{asset('area-admin/assets/js/custom.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" ></script>
+<script src="{{ asset('js/summernote.js') }}"></script>
+
 
 
 </body>

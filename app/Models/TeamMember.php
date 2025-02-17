@@ -8,11 +8,12 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TeamMember
- * 
+ *
  * @property int $member_id
  * @property string|null $first_name
  * @property string|null $last_name
@@ -29,13 +30,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property bool $is_active
- * 
+ *
  * @property Collection|AboutU[] $about_us
  *
  * @package App\Models
  */
 class TeamMember extends Model
 {
+    use HasFactory;
 	protected $table = 'team_members';
 	protected $primaryKey = 'member_id';
 
