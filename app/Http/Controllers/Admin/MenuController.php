@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
-use Illuminate\Http\Request;
+use App\Http\Requests\MenuRequest;
 
 class MenuController extends Controller
 {
@@ -13,9 +12,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
-        $Menus = Menu::all();
-        return view('admin.menu.index', compact('Menus'));
+        $menu = Menu::orderby('menu_id', 'DESC')->paginate(5);
+        return view('admin.menu.index', compact('menu'));
     }
 
     /**
@@ -23,17 +21,16 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.menu.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MenuRequest $request)
     {
-        Menu::create($request->all());
-        session()->flash('success', 'Thêm menu thành công');
+        $menu = Menu::create($request->validated());
+        session()->flash('success', "Thêm menu $menu->title thành công");
         return redirect()->route('admin.menu.index');
     }
 
@@ -58,11 +55,11 @@ class MenuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(MenuRequest $request, $id)
     {
         $menu = Menu::findOrFail($id);
-        $menu->update($request->all());
-        session()->flash('edit_success', 'Cập nhật menu thành công');
+        $menu->update($request->validated());
+        session()->flash('edit_success', "Cập nhật menu $menu->title thành công");
         return redirect()->route('admin.menu.index');
     }
 
@@ -73,7 +70,7 @@ class MenuController extends Controller
     {
         $menu = Menu::findOrFail($id);
         $menu->delete();
-        session()->flash('delete_success', 'Xóa menu thành công!');
+        session()->flash('delete_success', "Xóa menu $menu->title thành công");
         return redirect()->route('admin.menu.index');
     }
 }

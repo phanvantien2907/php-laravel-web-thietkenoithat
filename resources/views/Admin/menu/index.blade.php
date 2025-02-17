@@ -54,7 +54,7 @@
 
                                         <tbody>
                                         @php $h = 1; @endphp
-                                        @foreach($Menus as $item)
+                                        @foreach($menu as $item)
                                             <tr>
                                                 <td>{{$h++}}</td>
                                                 <td>{{$item->title}}</td>
@@ -79,7 +79,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -88,16 +87,24 @@
                             <div class="card-footer text-right">
                                 <nav class="d-inline-block">
                                     <ul class="pagination mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                                        <li class="page-item {{ $menu->onFirstPage() ? 'disabled' : '' }}">
+                                            <a class="page-link" href="{{ $menu->previousPageUrl() }}" tabindex="-1">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </a>
                                         </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                                        @php
+                                            $start = max(1, $menu->currentPage() - 1);
+                                            $end = min($start + 2, $menu->lastPage());
+                                        @endphp
+                                        @for ($i = $start; $i <= $end; $i++)
+                                            <li class="page-item {{ $menu->currentPage() == $i ? 'active' : '' }}">
+                                                <a class="page-link" href="{{ $menu->url($i) }}">{{ $i }}</a>
+                                            </li>
+                                        @endfor
+                                        <li class="page-item {{ $menu->hasMorePages() ? '' : 'disabled' }}">
+                                            <a class="page-link" href="{{ $menu->nextPageUrl() }}">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
                                         </li>
                                     </ul>
                                 </nav>

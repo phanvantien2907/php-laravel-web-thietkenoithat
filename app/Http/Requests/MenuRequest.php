@@ -11,7 +11,7 @@ class MenuRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,10 +23,10 @@ class MenuRequest extends FormRequest
     {
         return [
             // check validate
-            'name' => 'required',
+            'title' => 'required',
             'slug' => 'required',
             'levels' => 'required',
-            'is_active' => 'required | in:0,1',
+            'is_active' => 'required|in:0,1',
         ];
     }
 }
