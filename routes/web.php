@@ -48,16 +48,27 @@ Route::post('/contact/send', [\App\Http\Controllers\ContactController::class, 'c
 // admin route
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\LoginController::class, 'index'])->name('login'); // route mặc dinh khi vào admin
-    Route::resource('contact', \App\Http\Controllers\Admin\ContactController::class);
-    Route::resource('login', \App\Http\Controllers\Admin\LoginController::class);
-    Route::resource('register', \App\Http\Controllers\Admin\RegisiterController::class);
-    Route::resource('home', \App\Http\Controllers\Admin\DashboardController::class);
-    Route::resource('blog', \App\Http\Controllers\Admin\BlogController::class);
-    Route::resource('project', \App\Http\Controllers\Admin\ProjectController::class);
-    Route::resource('menu', \App\Http\Controllers\Admin\MenuController::class);
-    Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
-    Route::resource('team', \App\Http\Controllers\Admin\TeamController::class);
-    Route::get('file-manager', [\Barryvdh\Elfinder\ElfinderController::class, 'showIndex'])->name('file-manager');
+    Route::get('/login', [\App\Http\Controllers\Admin\LoginController::class, 'login'])->name('login.index');
+    Route::post('/login', [\App\Http\Controllers\Admin\LoginController::class, 'login'])->name('login.post');
+    Route::post('/logout', [\App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('logout');
+    Route::get('register', [\App\Http\Controllers\Admin\RegisiterController::class, 'index'])->name('register');
+    Route::post('/register', [\App\Http\Controllers\Admin\RegisiterController::class, 'register'])->name('register.post');
+
+
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::resource('contact', \App\Http\Controllers\Admin\ContactController::class);
+        Route::resource('home', \App\Http\Controllers\Admin\DashboardController::class);
+        Route::resource('blog', \App\Http\Controllers\Admin\BlogController::class);
+        Route::resource('project', \App\Http\Controllers\Admin\ProjectController::class);
+        Route::resource('menu', \App\Http\Controllers\Admin\MenuController::class);
+        Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+        Route::resource('team', \App\Http\Controllers\Admin\TeamController::class);
+        Route::get('file-manager', [\Barryvdh\Elfinder\ElfinderController::class, 'showIndex'])->name('file-manager');
+        Route::any('file-manager/connector', [\Barryvdh\Elfinder\ElfinderController::class, 'showConnector'])->name('file-manager.connector');
+        Route::get('file-manager/popup/{input_id}', [\Barryvdh\Elfinder\ElfinderController::class, 'showPopup'])->name('file-manager.popup');
+    });
+
+
 });
 
 

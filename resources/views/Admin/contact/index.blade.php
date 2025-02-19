@@ -48,7 +48,7 @@
                                             <td>{{$h++}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->email}}</td>
-                                            <td>{{$item->message}}</td>
+                                            <td>{!! $item->message !!}</td>
                                             @if($item->is_active)
                                                 <td><div class="badge badge-success">Đã xử lý</div></td>
                                             @else

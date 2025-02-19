@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -12,60 +16,31 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
         return view('admin.login.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-        return view('admin.login.create');
+    public function login(LoginRequest $request) {
+        $login = $request->validated(); // dau tien check validate trong from
+        $user = User::where('email', $login['email'])->first();
+
+        if (!$user) {
+            return back()->withErrors(['email', 'Tài khoản không tồn tại'])->onlyInput('email');
+        }
+
+        if (!!Hash::check($login['password'], $user->password)) {
+            return back()->withErrors(['password', 'Tài khoản hoặc mật khẩu không đúng'])->onlyInput('password');
+        }
+
+        Auth::guard('admin')->login($user);
+        $request->session()->regenerate();
+        return redirect()->route('admin.home.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function logout(LoginRequest $request)
     {
-        //
-
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-        return view('admin.login.show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-        return view('admin.login.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-        return view('admin.login.edit');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.login.index');
     }
 }

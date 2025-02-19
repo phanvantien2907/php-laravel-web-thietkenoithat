@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TeamRequest;
 use App\View\Components\team;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
@@ -14,8 +15,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = TeamMember::all();
-        return view('admin.team.index', compact('teams'));
+        $team = TeamMember::orderby('member_id', 'desc')->paginate(5);
+        return view('admin.team.index', compact('team'));
     }
 
     /**
@@ -30,9 +31,10 @@ class TeamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TeamRequest $request)
     {
-        TeamMember::create($request->all());
+        $team = TeamMember::create($request->validated() );
+        session()->flash('success', "Thêm thành viên $team thành công");
         return redirect()->route('admin.team.index');
     }
 
@@ -41,7 +43,7 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        $team = TeamMember::findOrFaill();
+        $team = TeamMember::findOrFaill($id);
         return view('admin.team.show', compact('team'));
     }
 
@@ -56,11 +58,11 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(TeamRequest $request, $id)
     {
         $team = TeamMember::findOrFail($id);
-        $team->update($request->all());
-        session()->flash('edit_success', 'Sửa thành viên thành công');
+        $team->update($request->validated());
+        session()->flash('edit_success', "Sửa thành viên $team thành công");
         return redirect()->route('admin.team.index');
     }
 
@@ -71,9 +73,7 @@ class TeamController extends Controller
     {
         $team = TeamMember::findOrFail($id);
         $team->delete();
-        $first_name = $team->first_name;
-        $last_name = $team->last_name;
-        session()->flash('delete_success', 'Xóa thành viên' . $last_name. $first_name. 'thành công');
+        session()->flash('delete_success', "Xóa thành viên $team->last_name $team->first_name thành công");
         return redirect()->route('admin.team.index');
     }
 }

@@ -56,7 +56,7 @@
 
                                     <tbody>
                                     @php $h = 1; @endphp
-                                    @foreach($teams as $item)
+                                    @foreach($team as $item)
                                         <tr>
                                             <td>{{$h++}}</td>
                                             <td>{{$item->last_name}}</td>
@@ -92,16 +92,24 @@
                         <div class="card-footer text-right">
                             <nav class="d-inline-block">
                                 <ul class="pagination mb-0">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                                    <li class="page-item {{ $team->onFirstPage() ? 'disabled' : '' }}">
+                                        <a class="page-link" href="{{ $team->previousPageUrl() }}" tabindex="-1">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </a>
                                     </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">2</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                                    @php
+                                        $start = max(1, $team->currentPage() - 1);
+                                        $end = min($start + 2, $team->lastPage());
+                                    @endphp
+                                    @for ($i = $start; $i <= $end; $i++)
+                                        <li class="page-item {{ $team->currentPage() == $i ? 'active' : '' }}">
+                                            <a class="page-link" href="{{ $team->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                    <li class="page-item {{ $team->hasMorePages() ? '' : 'disabled' }}">
+                                        <a class="page-link" href="{{ $team->nextPageUrl() }}">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>

@@ -45,7 +45,7 @@
 
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="text" id="image" name="image" class="form-control">
+                                        <input type="text" id="image_path" name="image" class="form-control">
                                         <button type="button" class="btn btn-primary mt-2" onclick="openElFinder()">Choose a picture</button>
                                     </div>
 
@@ -75,7 +75,7 @@
 
                                     <div class="d-flex">
                                         <input type="submit" value="Create" class="btn btn-primary rounded-pill btn-lg me-2 mx-1" />
-                                        <a href="/admin/menu" class="btn btn-secondary rounded-pill btn-lg mx-3">Cancel</a>
+                                        <a href="{{route('admin.team.index')}}" class="btn btn-secondary rounded-pill btn-lg mx-3">Cancel</a>
                                     </div>
                                 </form>
 

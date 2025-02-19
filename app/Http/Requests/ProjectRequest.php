@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TeamRequest extends FormRequest
+class ProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,12 +22,10 @@ class TeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // check validate
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'image' => 'required|string|max:255',
+            // check validate cho project
+            'title' => 'required',
+            'slug' => 'required',
+            'image' => 'required',
             'is_active' => 'required|in:0,1',
         ];
     }

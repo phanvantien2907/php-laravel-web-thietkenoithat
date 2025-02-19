@@ -19,7 +19,8 @@
                         <div class="card-header"><h4>Login</h4></div>
 
                         <div class="card-body">
-                            <form method="POST" action="#" class="needs-validation" novalidate="">
+                            <form method="POST" action="{{route('admin.login.post')}}" class="needs-validation" novalidate="">
+                                @csrf
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
@@ -30,7 +31,7 @@
 
                                 <div class="form-group">
                                     <div class="d-block">
-                                        <label for="password" class="control-label">Password</label>
+                                        <label type="password" name="password" for="password" class="control-label">Password</label>
                                         <div class="float-right">
                                             <a href="auth-forgot-password.html" class="text-small">
                                                 Forgot Password?
