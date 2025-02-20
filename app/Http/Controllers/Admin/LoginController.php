@@ -24,23 +24,22 @@ class LoginController extends Controller
         $user = User::where('email', $login['email'])->first();
 
         if (!$user) {
-            return back()->withErrors(['email', 'Tài khoản không tồn tại'])->onlyInput('email');
+            return back()->with('error', "Tài khoản {$login['email']} không tồn tại");
         }
 
-        if (!!Hash::check($login['password'], $user->password)) {
-            return back()->withErrors(['password', 'Tài khoản hoặc mật khẩu không đúng'])->onlyInput('password');
-        }
+        if (Auth::guard('admin')->attempt($login)) {
+            $request->session()->regenerate();
+            return redirect()->intended('admin.home.index');
 
-        Auth::guard('admin')->login($user);
-        $request->session()->regenerate();
-        return redirect()->route('admin.home.index');
+        }
+        return back()->with('error', "Tài khoản $user->email hoặc mật khẩu không chính xác");
     }
 
-    public function logout(LoginRequest $request)
+    public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('admin.login.index');
+        return redirect()->route('admin.login');
     }
 }

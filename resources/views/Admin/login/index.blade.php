@@ -17,7 +17,11 @@
 
                     <div class="card card-primary">
                         <div class="card-header"><h4>Login</h4></div>
-
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="fa-solid fa-exclamation-circle"></i> {{ session()->get('error') }}
+                            </div>
+                        @endif
                         <div class="card-body">
                             <form method="POST" action="{{route('admin.login.post')}}" class="needs-validation" novalidate="">
                                 @csrf
