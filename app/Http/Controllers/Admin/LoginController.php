@@ -20,18 +20,32 @@ class LoginController extends Controller
     }
 
     public function login(LoginRequest $request) {
-        $login = $request->validated(); // dau tien check validate trong from
+        $login = $request->validated();
         $user = User::where('email', $login['email'])->first();
 
         if (!$user) {
             return back()->with('error', "Tài khoản {$login['email']} không tồn tại");
         }
 
+        if($user->is_active == 0) {
+            return back()->with('error', "Tài khoản {$login['email']} chưa được kích hoạt");
+        }
+
+        if(!password_get_info($user->password)['algo']) {
+            return back()->with('error', "Mật khẩu {$login['email']} này chưa được mã hóa");
+        }
+
         if (Auth::guard('admin')->attempt($login)) {
             $request->session()->regenerate();
-            return redirect()->intended('admin.home.index');
+            session([
+               'user_id' => $user->user_id,
+                'username' => $user->first_name . ' ' . $user->last_name,
+                'login_time' => time()->now(),
+            ]);
 
+            return redirect()->intended('admin/home');
         }
+
         return back()->with('error', "Tài khoản $user->email hoặc mật khẩu không chính xác");
     }
 
