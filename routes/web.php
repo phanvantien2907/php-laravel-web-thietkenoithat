@@ -51,8 +51,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [\App\Http\Controllers\Admin\LoginController::class, 'login'])->name('login.index');
     Route::post('/login', [\App\Http\Controllers\Admin\LoginController::class, 'login'])->name('login.post');
     Route::post('/logout', [\App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('logout');
-    Route::get('register', [\App\Http\Controllers\Admin\RegisiterController::class, 'index'])->name('register');
-    Route::post('/register', [\App\Http\Controllers\Admin\RegisiterController::class, 'register'])->name('register.post');
+    Route::get('register', [\App\Http\Controllers\Admin\RegisterController::class, 'index'])->name('register.index');
+    Route::post('/register', [\App\Http\Controllers\Admin\RegisterController::class, 'register'])->name('register.post');
 
 
     Route::middleware(['auth:admin'])->group(function () {
