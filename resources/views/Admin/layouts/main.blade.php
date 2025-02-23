@@ -71,9 +71,6 @@
 <!-- Template JS File -->
 <script src="{{asset('area-admin/assets/js/scripts.js')}}"></script>
 <script src="{{asset('area-admin/assets/js/custom.js')}}"></script>
-<script src="{{ asset('js/summernote.js') }}"></script>
-
-
 
 </body>
 </html>

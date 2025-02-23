@@ -13,7 +13,6 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
         $contact = Contact::orderby('contact_id', 'DESC')->paginate(50);
         return view('admin.contact.index', compact('contact'));
     }
@@ -38,9 +37,14 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contact = Contact::findOrFail($id);
-        $contact->update($request->only(['name', 'email', 'message']));
-        session()->flash('edit_success', "Cập nhật liên hệ {$contact->email} của thành công");
+        try {
+            $contact = Contact::findOrFail($id);
+            $contact->update($request->only(['name', 'email', 'message']));
+            session()->flash('edit_success', "Cập nhật liên hệ {$contact->email} của thành công");
+        }
+        catch (\Exception $exception) {
+            dd($exception);
+        }
         return redirect()->route('admin.contact.index');
     }
 
@@ -49,9 +53,14 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $contact = Contact::findOrFail($id);
-        $contact->delete();
-        session()->flash('delete_success', "Xóa thành công liên hệ của {$contact->email} ");
+        try {
+            $contact = Contact::findOrFail($id);
+            $contact->delete();
+            session()->flash('delete_success', "Xóa thành công liên hệ của {$contact->email} ");
+        }
+        catch (\Exception $exception) {
+            dd($exception);
+        }
         return redirect()->route('admin.contact.index');
     }
 }

@@ -30,8 +30,13 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $category = Category::create($request->validated());
-        session()->flash('success', "Thêm danh mục $category->title thành công");
+        try {
+            $category = Category::create($request->validated());
+            session()->flash('success', "Thêm danh mục $category->title thành công");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
         return redirect()->route('admin.category.index');
     }
 
@@ -58,9 +63,14 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
-        $category->update($request->validated());
-        session()->flash('edit_success', "Sửa danh mục $category->title thành công ");
+        try {
+            $category = Category::findOrFail($id);
+            $category->update($request->validated());
+            session()->flash('edit_success', "Sửa danh mục $category->title thành công ");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
         return redirect()->route('admin.category.index');
     }
 
@@ -69,9 +79,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        session()->flash('delete_success', "Xóa danh mục $category->title thành công");
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+            session()->flash('delete_success', "Xóa danh mục $category->title thành công");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
         return redirect()->route('admin.category.index');
     }
 }

@@ -39,15 +39,16 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Position</label>
-                                        <input type="text" name="position" class="form-control" required>
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="text" id="image_path" name="image" class="form-control">
-                                        <button type="button" class="btn btn-primary mt-2" onclick="openElFinder()">Choose a picture</button>
+                                        <input type="text" name="image" id="image-input" class="form-control" required>
+                                        <button type="button" id="choose-image-btn" class="btn btn-primary mt-2">Choose a picture</button>
                                     </div>
+
 
 {{--                                    <div class="form-group">--}}
 {{--                                        <label class="control-label">Ảnh</label>--}}
@@ -58,12 +59,6 @@
 {{--                                            <input type="text" class="form-control" id="image" aria-describedby="button-addon2">--}}
 {{--                                        </div>--}}
 {{--                                    </div>--}}
-
-
-                                    <div class="form-group">
-                                        <label>Description</label>
-                                       <textarea class="summernote" name="meta_description"></textarea>
-                                    </div>
 
                                     <div class="form-group">
                                         <label>Is_active</label>
@@ -79,7 +74,6 @@
                                     </div>
                                 </form>
 
-
                             </div>
                         </div>
                     </div>
@@ -87,5 +81,15 @@
             </div>
         </section>
     </div>
-
+    <script>
+        document.getElementById('choose-image-btn').addEventListener('click', function() {
+            var win = window.open('/admin/file-manager/popup/', 'elFinder', 'width=900,height=500');
+            win.onload = function() {
+                win.processSelectedFile = function(fileUrl) {
+                    document.getElementById('image-input').value = fileUrl;
+                    win.close();
+                };
+            };
+        });
+    </script>
 @endsection

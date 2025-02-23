@@ -29,10 +29,10 @@
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
-                    url: '{{ route("elfinder.connector") }}',  // connector URL
+                    url: '{{ route("admin.file-manager.connector") }}',  // connector URL
                     soundPath: '{{ asset($dir.'/sounds') }}',
                     dialog: {width: 900, modal: true, title: 'Select a file'},
                     resizable: false,

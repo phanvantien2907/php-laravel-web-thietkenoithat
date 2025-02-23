@@ -29,8 +29,13 @@ class MenuController extends Controller
      */
     public function store(MenuRequest $request)
     {
-        $menu = Menu::create($request->validated());
-        session()->flash('success', "Thêm menu $menu->title thành công");
+        try {
+            $menu = Menu::create($request->validated());
+            session()->flash('success', "Thêm menu $menu->title thành công");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
         return redirect()->route('admin.menu.index');
     }
 
@@ -57,9 +62,14 @@ class MenuController extends Controller
      */
     public function update(MenuRequest $request, $id)
     {
-        $menu = Menu::findOrFail($id);
-        $menu->update($request->validated());
-        session()->flash('edit_success', "Cập nhật menu $menu->title thành công");
+        try {
+            $menu = Menu::findOrFail($id);
+            $menu->update($request->validated());
+            session()->flash('edit_success', "Cập nhật menu $menu->title thành công");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
         return redirect()->route('admin.menu.index');
     }
 
@@ -68,9 +78,14 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        $menu = Menu::findOrFail($id);
-        $menu->delete();
-        session()->flash('delete_success', "Xóa menu $menu->title thành công");
+        try {
+            $menu = Menu::findOrFail($id);
+            $menu->delete();
+            session()->flash('delete_success', "Xóa menu $menu->title thành công");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
         return redirect()->route('admin.menu.index');
     }
 }

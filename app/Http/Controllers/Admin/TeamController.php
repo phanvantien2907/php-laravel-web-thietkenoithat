@@ -24,7 +24,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+
         return view('admin.team.create');
     }
 
@@ -33,8 +33,13 @@ class TeamController extends Controller
      */
     public function store(TeamRequest $request)
     {
-        $team = TeamMember::create($request->validated() );
-        session()->flash('success', "Thêm thành viên $team thành công");
+        try {
+            $team = TeamMember::create($request->validated() );
+            session()->flash('success', "Thêm thành viên $team->first_name $team->last_name thành công");
+        }
+        catch (\Exception $exception){
+           dd($exception);
+        }
         return redirect()->route('admin.team.index');
     }
 
@@ -43,7 +48,7 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        $team = TeamMember::findOrFaill($id);
+        $team = TeamMember::findOrFail($id);
         return view('admin.team.show', compact('team'));
     }
 
@@ -52,7 +57,8 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.team.edit');
+        $team = TeamMember::findOrFail($id);
+        return view('admin.team.edit', compact('team'));
     }
 
     /**
@@ -60,9 +66,18 @@ class TeamController extends Controller
      */
     public function update(TeamRequest $request, $id)
     {
-        $team = TeamMember::findOrFail($id);
-        $team->update($request->validated());
-        session()->flash('edit_success', "Sửa thành viên $team thành công");
+        try {
+            if ($id == 11) {
+                throw new \Exception("Lỗi ngoại lệ");
+            }
+            $team = TeamMember::findOrFail($id);
+            $team->update($request->validated());
+            session()->flash('edit_success', "Sửa thành viên $team->first_name $team->last_name thành công");
+
+        }
+        catch (\Exception $exception){
+          dd($exception);
+        }
         return redirect()->route('admin.team.index');
     }
 
@@ -71,9 +86,14 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        $team = TeamMember::findOrFail($id);
-        $team->delete();
-        session()->flash('delete_success', "Xóa thành viên $team->last_name $team->first_name thành công");
+        try {
+            $team = TeamMember::findOrFail($id);
+            $team->delete();
+            session()->flash('delete_success', "Xóa thành viên $team->last_name $team->first_name thành công");
+        }
+        catch (\Exception $exception){
+           dd($exception);
+        }
         return redirect()->route('admin.team.index');
     }
 }

@@ -65,7 +65,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('team', \App\Http\Controllers\Admin\TeamController::class);
         Route::get('file-manager', [\Barryvdh\Elfinder\ElfinderController::class, 'showIndex'])->name('file-manager');
         Route::any('file-manager/connector', [\Barryvdh\Elfinder\ElfinderController::class, 'showConnector'])->name('file-manager.connector');
-        Route::get('file-manager/popup/{input_id}', [\Barryvdh\Elfinder\ElfinderController::class, 'showPopup'])->name('file-manager.popup');
+        Route::get('file-manager/popup/{input_id?}', [\Barryvdh\Elfinder\ElfinderController::class, 'showPopup'])->name('file-manager.popup');
     });
 
 

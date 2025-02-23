@@ -21,7 +21,6 @@ class RegisterController extends Controller
 
     public function register (RegisterRequest $request)
     {
-
         try {
             $register = $request->validated();
             $create = User::create([
@@ -36,7 +35,7 @@ class RegisterController extends Controller
             return redirect()->route('admin.register.index');
         }
         catch (\Exception $exception) {
-        dd($exception->getMessage());
+        dd($exception);
         }
     }
 }

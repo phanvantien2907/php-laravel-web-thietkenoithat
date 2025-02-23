@@ -39,9 +39,9 @@ return array(
     */
 
     'route' => [
-        'prefix' => 'elfinder',
-//        'middleware' => array('web', 'auth'), //Set to null to disable middleware filter
-        'middleware' => array(), // sau cần thiêết mở lại cái kia là được
+        'prefix' => 'admin/file-manager',
+        'middleware' => array('web', 'auth'), //Set to null to disable middleware filter
+//        'middleware' => array(), // sau cần thiêết mở lại cái kia là được
     ],
 
     /*
@@ -71,6 +71,8 @@ return array(
             'path'          => public_path('files'),
             'URL'           => env('APP_URL') . '/files',
             'accessControl' => 'access',
+            'startPath'     => public_path('files'),
+
         ],
     ],
 
