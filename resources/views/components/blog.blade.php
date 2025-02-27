@@ -8,7 +8,7 @@
             <div class="lower-content">
                 <div class="post-meta">
                     <ul class="post-info clearfix">
-                        <li><a href="{{ route('blog.detail', ['slug' => $item->slug, 'id' => $item->blog_id ]  )}}">By : {{$item->user->name}}</a></li>
+                        <li><a href="{{ route('blog.detail', ['slug' => $item->slug, 'id' => $item->blog_id ]  )}}">By : {{$item->user->last_name}}</a></li>
                         <li><a href="{{ route('blog.detail', ['slug' => $item->slug, 'id' => $item->blog_id ]  )}}">interior, furniture</a></li>
                         <li><a href="{{ route('blog.detail', ['slug' => $item->slug, 'id' => $item->blog_id ]  )}}">Comments: {{$item->blog_comments->count()}}</a></li>
                     </ul>

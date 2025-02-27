@@ -67,9 +67,6 @@ class TeamController extends Controller
     public function update(TeamRequest $request, $id)
     {
         try {
-            if ($id == 11) {
-                throw new \Exception("Lỗi ngoại lệ");
-            }
             $team = TeamMember::findOrFail($id);
             $team->update($request->validated());
             session()->flash('edit_success', "Sửa thành viên $team->first_name $team->last_name thành công");
