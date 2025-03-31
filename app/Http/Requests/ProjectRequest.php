@@ -11,7 +11,7 @@ class ProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,11 @@ class ProjectRequest extends FormRequest
         return [
             // check validate cho project
             'title' => 'required',
-            'slug' => 'required',
-            'image' => 'required',
+            'category_id' => 'required|exists:category,category_id',
+            'description' => 'required |string',
+            'detail' => 'required |string',
+            'meta_title' => 'required | string',
+            'meta_description' => 'required | string',
             'is_active' => 'required|in:0,1',
         ];
     }

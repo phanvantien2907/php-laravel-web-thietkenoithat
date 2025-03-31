@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
+use App\Models\Category;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ProjectController extends Controller
 {
@@ -13,8 +17,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.project.index');
+        $project = Project::with('category')->orderby('project_id','desc')->paginate(5);
+        return view('admin.project.index', compact('project'));
     }
 
     /**
@@ -22,7 +26,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::select('category_id', 'title')->get();
+        return view('admin.project.create', compact('category'));
     }
 
     /**
@@ -30,7 +35,15 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request)
     {
-        //
+        try {
+            $project = Project::create($request->validated());
+            $project->slug = Str::slug($project->title);
+            session()->flash('success', "Thêm ảnh của dự án $project->title thành công");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
+        return redirect()->route('admin.project.index');
     }
 
     /**
@@ -38,7 +51,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('admin.project.show', compact('project'));
     }
 
     /**
@@ -46,7 +60,9 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $category = Category::select('category_id', 'title')->get();
+        return view('admin.project.edit', compact('project', 'category'));
     }
 
     /**
@@ -54,7 +70,18 @@ class ProjectController extends Controller
      */
     public function update(ProjectRequest $request,  $id)
     {
-        //
+        try {
+            $project = Project::findOrFail($id);
+            $slug = $request->validated();
+            $slug['slug'] = Str::slug($slug['title']);
+            $project->update($slug);
+            session()->flash('edit_success', "Sửa ảnh của dự án $project->title thành công");
+
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
+        return redirect()->route('admin.project.index');
     }
 
     /**
@@ -62,6 +89,14 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $project = Project::findOrFail($id);
+            $project->delete();
+            session()->flash('delete_success', "Xóa ảnh của dự án $project->title thành công");
+        }
+        catch (\Exception $exception){
+            dd($exception);
+        }
+        return redirect()->route('admin.project.index');
     }
 }

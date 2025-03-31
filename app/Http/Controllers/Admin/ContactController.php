@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ContactController extends Controller
 {
@@ -13,6 +14,9 @@ class ContactController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('isAdmin')) {
+            abort(403);
+        }
         $contact = Contact::orderby('contact_id', 'DESC')->paginate(50);
         return view('admin.contact.index', compact('contact'));
     }

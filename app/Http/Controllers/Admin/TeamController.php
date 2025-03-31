@@ -7,6 +7,8 @@ use App\Http\Requests\TeamRequest;
 use App\View\Components\team;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TeamController extends Controller
 {
@@ -15,6 +17,9 @@ class TeamController extends Controller
      */
     public function index()
     {
+       if(!Gate::allows('isAdmin')){
+           abort(403);
+       }
         $team = TeamMember::orderby('member_id', 'desc')->paginate(5);
         return view('admin.team.index', compact('team'));
     }

@@ -39,7 +39,8 @@ class User extends Authenticatable
 
 	protected $casts = [
 		'email_verified_at' => 'datetime',
-		'is_active' => 'bool'
+		'is_active' => 'bool',
+        'is_admin' => 'bool'
 	];
 
 	protected $hidden = [
@@ -54,7 +55,8 @@ class User extends Authenticatable
 		'email_verified_at',
 		'password',
 		'remember_token',
-		'is_active'
+		'is_active',
+        'is_admin'
 	];
 
 	public function blogs()

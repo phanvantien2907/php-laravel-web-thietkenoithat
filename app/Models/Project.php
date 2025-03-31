@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $title
  * @property string|null $slug
  * @property string|null $description
+ * @property string|null $detail
  * @property string|null $meta_title
  * @property string|null $meta_description
  * @property string|null $image
@@ -47,6 +48,7 @@ class Project extends Model
 		'title',
 		'slug',
 		'description',
+        'detail',
 		'meta_title',
 		'meta_description',
 		'image',
@@ -57,6 +59,6 @@ class Project extends Model
 
 	public function category()
 	{
-		return $this->belongsTo(Category::class);
+		return $this->belongsTo(Category::class, 'category_id');
 	}
 }
